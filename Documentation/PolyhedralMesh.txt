@@ -1,0 +1,80 @@
+@startuml 
+
+title Geodesic and Goldberg Polyhedron
+
+package PolyhedralLibrary <<Folder>>
+{
+
+struct PolyhedralMesh {
+  + NumCell0Ds : int
+  + Cell0DsId : vector<int>
+  + Cell0DsCoordinates : MatrixXd
+  + ShortPathCell0Ds : map<int, list<int>>
+
+  + NumCell1Ds : int
+  + Cell1DsId : vector<int>
+  + Cell1DsExtrema : MatrixXi
+  + ShortPathCell1Ds : map<int, list<int>>
+
+  + NumCell2Ds : int
+  + Cell2DsId : vector<int>
+  + Cell2DsVertices : vector<vector<int>>
+  + Cell2DsEdges : vector<vector<int>>
+
+  + NumCell3Ds : int
+  + Cell3DsId : vector<int>
+  + Cell3DsVertices : vector<vector<int>>
+  + Cell3DsEdges : vector<vector<int>>
+  + Cell3DsFaces : vector<vector<int>>
+.. Non member function ..
+    + bool ImportMesh(PolyhedralMesh& mesh, const string& file0Ds, const string& file1Ds, const string& file2Ds, const string& file3Ds)
+    + bool ImportCell0Ds(const string& file0Ds, PolyhedralMesh& mesh)
+    + bool ImportCell1Ds(const string& file1Ds, PolyhedralMesh& mesh)
+    + bool ImportCell2Ds(const string& file2Ds, PolyhedralMesh& mesh)
+    + bool ImportCell3Ds(const string& file3Ds, PolyhedralMesh& mesh)
+    + bool Exportfile0Ds(const PolyhedralMesh& polyNew)
+    + bool Exportfile1Ds(const PolyhedralMesh& polyNew)
+    + bool Exportfile2Ds(const PolyhedralMesh& polyNew)
+    + bool Exportfile3Ds(const PolyhedralMesh& polyNew)
+    + bool ExportPolyhedron(const PolyhedralMesh& polyNew)
+
+    + void TriangulationTypeI(const PolyhedralMesh& polyOld, PolyhedralMesh& polyNew, const int& p, const int& q, const int& n)
+    + void  TriangulationTypeII(const PolyhedralMesh& polyOld, PolyhedralMesh& polyNew, const int& n)
+    + int  CheckAddEdges(PolyhedralMesh& poly, const Vector2i& edge, int& id_edge)
+    + int CheckAddVertices(PolyhedralMesh& poly, const Vector3d& vertex, int& id_vert)
+    + bool DualConstructor(const PolyhedralMesh& polyhedron, PolyhedralMesh& dual)
+    + int int FindEdge(const PolyhedralMesh& mesh, const int& v0, const int& v1)
+    + void CreateAdjacencyList(const PolyhedralMesh& mesh, vector<list<int>>& adjList)
+    + void CreateWheightsMatrix(const PolyhedralMesh& mesh, MatrixXd& weights)
+    + void ComputeDistances(const vector<list<int>>& adjList, const int& s, const int& d, const MatrixXd& weights, vector<int>& pred, vector<double>& dist)
+    + bool FindShortestPath(const PolyhedralMesh& mesh, const int& sourceNode, const int& destinationNode, unsigned int& numEdges, double& pathLenght)
+.. TESTPOLYGON ..
+TestCheckAddEdges1              TestCheckAddVertices1             TestTriangulationTypeI           TestDualConstructor        TestComputeDistances              TestCreateAdjacencyList
+TestCheckAddEdges2              TestCheckAddVertices2             TestTriangulationTypeII          TestFindEdge                   TestCreateWeightsMatrix           TestFindShortestPath 
+}
+
+package Gedim <<Frame>>
+{
+
+}
+package GTest <<Frame>>
+{
+
+}
+package Eigen <<Frame>>
+{
+
+}
+
+PolyhedralMesh::Interface --down--> GTest
+PolyhedralMesh::Interface --right--> Gedim
+PolyhedralMesh::Interface --left--> Eigen
+
+
+
+note "These are external packages" as Note
+Note .. Gedim
+Note .. GTest
+Note .. Eigen
+
+@enduml
