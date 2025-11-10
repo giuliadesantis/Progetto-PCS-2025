@@ -37,9 +37,27 @@ externals
 *Release*
 *release*
 *debug*
+build/
+Build/
+BUILD/
 
 # Configuration
 *.user
 
 #MAC
 *.DS_Store
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+*.cbp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

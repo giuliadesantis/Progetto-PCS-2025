@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.9)
+cmake_minimum_required(VERSION 3.10...3.30)
 
 project(ProgettoPCS2025 LANGUAGES CXX C VERSION 1.0.0)
 

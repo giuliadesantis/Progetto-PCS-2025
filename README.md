@@ -112,9 +112,104 @@ ProgettoPCS2025/
 
 ## 💻 Tecnologie utilizzate  
 - **Linguaggio:** C++ (standard ≥ C++17)  
-- **Build system:** CMake  
-- **Librerie:** Standard Template Library (STL)  
+- **Build system:** CMake (versione ≥ 3.10)
+- **Librerie:** 
+  - Standard Template Library (STL)
+  - Eigen3 (algebra lineare)
+  - GoogleTest & GoogleMock (testing)
 - **Output scientifico:** file `.vtk` per *ParaView*  
 - **Compatibilità:** Linux, macOS, Windows  
+
+---
+
+## 🚀 Come compilare ed eseguire
+
+### Prerequisiti
+Prima di compilare, assicurati di avere installato:
+- CMake (versione 3.10 o superiore)
+- Un compilatore C++ con supporto C++17 (g++, clang++, MSVC)
+- Eigen3
+- GoogleTest e GoogleMock
+
+#### Installazione dipendenze su Ubuntu/Debian:
+```bash
+sudo apt-get update
+sudo apt-get install -y cmake build-essential libeigen3-dev libgtest-dev libgmock-dev
+```
+
+#### Installazione dipendenze su macOS:
+```bash
+brew install cmake eigen googletest
+```
+
+### Compilazione
+
+1. **Clona il repository:**
+```bash
+git clone https://github.com/giuliadesantis/Progetto-PCS-2025.git
+cd Progetto-PCS-2025
+```
+
+2. **Crea la directory di build:**
+```bash
+mkdir build
+cd build
+```
+
+3. **Configura il progetto con CMake:**
+```bash
+cmake ..
+```
+
+4. **Compila:**
+```bash
+make -j$(nproc)  # Linux/macOS
+# oppure
+make -j4         # usa 4 core
+```
+
+### Esecuzione
+
+#### Esegui il programma principale:
+```bash
+./ProgettoPCS2025 p q b c [v0 v1]
+```
+
+**Parametri:**
+- `p` e `q`: simbolo di Schläfli `{p,q}` del solido platonico
+- `b` e `c`: parametri di triangolazione (classe I: b=0 o c=0; classe II: b=c)
+- `v0` e `v1` (opzionali): vertici per calcolare il cammino minimo
+
+**Esempi:**
+```bash
+# Genera un icosaedro geodetico di classe I
+./ProgettoPCS2025 3 5 0 2
+
+# Genera un tetraedro con calcolo del percorso tra vertici 0 e 2
+./ProgettoPCS2025 3 3 0 1 0 2
+```
+
+#### Esegui i test:
+```bash
+./ProgettoPCS2025_TEST
+```
+
+### Visualizzazione con ParaView
+I file `.vtk` generati possono essere visualizzati con ParaView:
+1. Apri ParaView
+2. File → Open → seleziona il file `.vtk` generato
+3. Clicca su "Apply" per visualizzare il modello 3D
+
+---
+
+## 🤝 Come contribuire
+
+Leggi il file [CONTRIBUTING.md](CONTRIBUTING.md) per le linee guida su come contribuire al progetto.
+
+---
+
+## 📝 Changelog
+
+Vedi [CHANGELOG.md](CHANGELOG.md) per la lista completa delle modifiche.
 
 ---
