@@ -3,8 +3,6 @@
 #include <iostream>
 #include "PolyhedralMesh.hpp"
 
-using namespace std;
-
 namespace PolyhedralLibrary
 {
 //Calcola il poliedro duale a partire dal poliedro di partenza in 3 step:
