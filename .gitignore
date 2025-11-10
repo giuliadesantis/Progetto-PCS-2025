@@ -40,6 +40,7 @@ externals
 build/
 Build/
 BUILD/
+_codeql_build_dir/
 
 # Configuration
 *.user
@@ -61,3 +62,6 @@ CTestTestfile.cmake
 *.swp
 *.swo
 *~
+
+# CodeQL
+_codeql_detected_source_root
