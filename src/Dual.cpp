@@ -10,6 +10,9 @@
 #include <vector>
 #include <set>
 
+using namespace std;
+using namespace Eigen;
+
 namespace PolyhedralLibrary
 {
 	

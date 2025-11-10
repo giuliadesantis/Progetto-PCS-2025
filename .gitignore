@@ -37,9 +37,31 @@ externals
 *Release*
 *release*
 *debug*
+build/
+Build/
+BUILD/
+_codeql_build_dir/
 
 # Configuration
 *.user
 
 #MAC
 *.DS_Store
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+*.cbp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# CodeQL
+_codeql_detected_source_root

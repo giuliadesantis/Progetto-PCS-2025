@@ -2,8 +2,6 @@
 #include <iostream>
 #include "PolyhedralMesh.hpp"
 
-using namespace std;
-
 namespace PolyhedralLibrary
 {
 // Esportazione delle proprietà di Cell0D dalla PolyhedralMesh
